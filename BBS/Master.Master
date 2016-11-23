@@ -1,0 +1,29 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master.master.cs" Inherits="BBS.Master"%>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>BBS</title>
+    <asp:ContentPlaceHolder ID="JScript" runat="server">
+
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div id="header">
+        <asp:Image ID="Logo" runat="server" ImageUrl="~/BBS-logo3.png" CssClass="main-logo"/>
+        <asp:ContentPlaceHolder ID="NavPlaceHolder" runat="server">
+    
+        </asp:ContentPlaceHolder>
+    </div>
+
+    <div id="body">
+        <asp:ContentPlaceHolder ID="BodyPlaceHolder" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
