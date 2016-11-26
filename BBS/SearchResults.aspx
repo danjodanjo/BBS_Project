@@ -14,7 +14,7 @@
             No Results found.
             Currently there is no hospital that has blood packet you're requested.
             Please contact hospital admin   
-            <asp:LinkButton runat="server" ID="ResearchLnkBtn" Text="Search Again" PostBackUrl="~/BloodRequest.aspx"></asp:LinkButton>
+            <asp:Button runat="server" ID="ResearchLnkBtn" Text="Search Again" OnClick="ResearchLnkBtn_Click"></asp:Button>
             <asp:Button runat="server" ID="RequestAdminBtn" Text="Request Hospital Admin" OnClick="RequestAdminBtn_Click" />
         </EmptyDataTemplate>
 
@@ -25,18 +25,19 @@
         </HeaderTemplate>
 
         <ItemTemplate>
-            <div>
-                <asp:GridView ID="SearchResultGridView" runat="server">
+            
+        </ItemTemplate>
+    </asp:FormView>
 
-
+    <div>
+                <asp:GridView ID="SearchResultGridView" runat="server" DataSourceID="SResultDataSource" AutoGenerateSelectButton="true" SelectedIndex="0">
+                    <SelectedRowStyle BackColor="Red" />
                 </asp:GridView>
-                
             </div>
 
             <div>
                 <asp:Button ID="OrderBloodBtn" Text="Order" runat="server" OnClientClick="return showWindow()" OnClick="OrderBloodBtn_Click" />
             </div>
-        </ItemTemplate>
-    </asp:FormView>
+
 
 </asp:Content>

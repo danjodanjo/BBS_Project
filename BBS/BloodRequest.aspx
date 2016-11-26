@@ -16,7 +16,8 @@
                     <asp:ListItem>B</asp:ListItem>
                     <asp:ListItem>O</asp:ListItem>
                     <asp:ListItem>AB</asp:ListItem>
-                    </asp:DropDownList></td>
+                    </asp:DropDownList>
+                </td>
                 <td>Quantity</td>
                 <td><asp:TextBox runat="server" ID="QtyTxtBox"></asp:TextBox></td>
             </tr>
@@ -39,7 +40,9 @@
             </tr>
             <tr>
                 <td>Expected Delivery</td>
-                <td><asp:Calendar ID="DeliveryCalendar" runat="server"></asp:Calendar></td>
+                <td><asp:Calendar ID="DeliveryCalendar" runat="server"></asp:Calendar>
+                </td>
+                
             </tr>
             <tr>
                 <td>Patients Documents</td>
@@ -47,7 +50,7 @@
                 </td>
             </tr>
             <tr>
-                <td><asp:Button runat="server" Text="Order" ID="OrderBldBtn" OnClick="OrderBloodBtn_Click" /></td>
+                <td><asp:Button runat="server" Text="Find" ID="OrderBldBtn" OnClick="OrderBloodBtn_Click"/></td>
             </tr>
         </table>
   

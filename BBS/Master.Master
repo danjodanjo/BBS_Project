@@ -9,11 +9,14 @@
 
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" type="text/css" href="main.css" />
+    <style type="text/css">
+        .main-logo {}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div id="header">
-        <asp:Image ID="Logo" runat="server" ImageUrl="~/BBS-logo3.png" CssClass="main-logo"/>
+        <asp:Image ID="Logo" runat="server" ImageUrl="~/BBS-logo3.png" CssClass="main-logo" Height="487px" Width="839px"/>
         <asp:ContentPlaceHolder ID="NavPlaceHolder" runat="server">
     
         </asp:ContentPlaceHolder>

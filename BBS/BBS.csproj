@@ -67,6 +67,8 @@
     <Content Include="BBS-logo3.png" />
     <Content Include="BloodInventory.aspx" />
     <Content Include="BloodRequest.aspx" />
+    <Content Include="EditProfile.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="main.css" />
     <Content Include="OrderDetails.aspx" />
     <Content Include="SearchResults.aspx" />
@@ -100,6 +102,16 @@
     </Compile>
     <Compile Include="BloodRequest.aspx.designer.cs">
       <DependentUpon>BloodRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
