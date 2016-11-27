@@ -40,7 +40,7 @@ namespace BBS
             string connString = WebConfigurationManager.ConnectionStrings["BBSConnectionString"].ConnectionString;
             SqlConnection connection = new SqlConnection(connString);
 
-            string query = "SELECT Type, Rhesus, DateTaken, Qty FROM [Blood] WHERE Type='" + DDLCategoryValue.SelectedItem.Value + "'";
+            string query = "SELECT Type, Rhesus, DateTaken, Qty FROM [Blood] WHERE Type='" + DDLCategoryValue.SelectedItem.Value + "' AND Blood_InventoryID = " + Request.Cookies["InventoryID"].Value;
 
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);

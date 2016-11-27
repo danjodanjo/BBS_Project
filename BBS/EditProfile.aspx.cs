@@ -7,8 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 
-
-namespace DotNet_Assignment2
+namespace BBS
 {
     public partial class EditProfile : System.Web.UI.Page
     {
@@ -39,14 +38,12 @@ namespace DotNet_Assignment2
                 reader.Close();
                 connection.Close();
             }
-            
+
         }
 
         protected void ImgBtnBack_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("DonorHomePage.aspx");
         }
-
-       
     }
 }

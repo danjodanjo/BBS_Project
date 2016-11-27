@@ -29,29 +29,31 @@ namespace BBS
             connection.Open();
             string authenticationQuery = "select DonorUserName from [Registration] where DonorPassword='" + txtPasswordLogin.Text + "' AND DonorUsername ='" + txtUsernameLogin.Text + "'";
             SqlCommand authCmd = new SqlCommand(authenticationQuery, connection);
-            Object session = authCmd.ExecuteScalar();
+            Object userSession = authCmd.ExecuteScalar();
 
-            if (session == null)
+
+            // there are two possibilities, either the donour doesn't exists, or the user is actually a staff
+            if (userSession == null)
             {
-                authenticationQuery = "select FirstName from [Staff] where Username='" + txtUsernameLogin.Text + "' AND Password ='" + txtPasswordLogin.Text + "'";
+                authenticationQuery = "select a.FirstName, b.HospitalID, b.HospitalName, c.InventoryID from [Staff] a JOIN [Hospital] b ON a.Staff_HospitalID = b.HospitalID JOIN [Inventory] c ON c.Inventory_HospitalID = b.HospitalID where Username='" + txtUsernameLogin.Text + "' AND Password ='" + txtPasswordLogin.Text + "'";
                 authCmd = new SqlCommand(authenticationQuery, connection);
-                SqlDataReader sessionDataReader = authCmd.ExecuteReader();
+                SqlDataReader staffSession = authCmd.ExecuteReader();
 
                 // if it's null, then neither the username is a donour nor a hospital admin, sent error message
-                if (session == null)
+                if (!staffSession.Read())
                 {
                     Response.Write("Username or password is incorrect!");
                 }
-
+                // the user who performs the login is a hospital staff
                 else
                 {
                     Response.Cookies["Type"].Value = "Staff";
                     Response.Cookies["Username"].Value = txtUsernameLogin.Text;
-                    Response.Cookies["HospitalID"].Value = session.
+                    Response.Cookies["HospitalID"].Value = staffSession["HospitalID"].ToString();
+                    Response.Cookies["HospitalName"].Value = staffSession["HospitalName"].ToString();
+                    Response.Cookies["InventoryID"].Value = staffSession["InventoryID"].ToString();
                     Response.Redirect("~/BloodInventory.aspx");
                 }
-
-
             }
             // there is a donour associated, sen
             else
