@@ -79,8 +79,8 @@ namespace BBS
             string connectionString = WebConfigurationManager.ConnectionStrings["BBSConnectionString"].ConnectionString;
             SqlConnection connection = new SqlConnection(connectionString);
 
-            string query = "INSERT INTO [Request](FromHospital_ID, ToHospital_ID, Blood, Rhesus, Qty, isAccepted, Attachment, RequiredDate) VALUES " +
-                "(@FRHospital, @TOHospital, @Blood, @Rhesus, @Qty, @isAccepted, @Attachment, @RequiredDate)";
+            string query = "INSERT INTO [Request](FromHospital_ID, ToHospital_ID, Blood, Rhesus, Qty, isAccepted, Attachment, RequiredDate, Status) VALUES " +
+                "(@FRHospital, @TOHospital, @Blood, @Rhesus, @Qty, @isAccepted, @Attachment, @RequiredDate, @Status)";
             
             connection.Open();
             SqlCommand command = new SqlCommand(query, connection);
@@ -92,6 +92,7 @@ namespace BBS
             command.Parameters.AddWithValue("@isAccepted", 0);
             command.Parameters.AddWithValue("@Attachment", "attachment file");
             command.Parameters.AddWithValue("@RequiredDate", Request.QueryString["delivery"]);
+            command.Parameters.AddWithValue("@Status", "Pending");
 
             command.ExecuteNonQuery();
             connection.Close();

@@ -7,7 +7,7 @@
 <asp:Content ID="OrderDetailsComponent" ContentPlaceHolderID="BodyPlaceHolder" runat="server">
    
     <h2> Order Requests </h2>
-    <asp:FormView ID="PendingRequestFormView"  DataSourceID="RequestDataSource" runat="server">
+    <asp:FormView ID="PendingRequestFormView" DataKeyNames="RequestID" DataSourceID="RequestDataSource" runat="server">
         <HeaderTemplate>
             Pending Request(S)
         </HeaderTemplate>
@@ -16,11 +16,16 @@
         </EmptyDataTemplate>
 
         <ItemTemplate>
-            <asp:GridView ID="PendingRequestGridView" AutoGenerateColumns="false" runat="server" DataSourceID="RequestDataSource" OnRowCommand="PendingRequestGridView_RowCommand">
+            <asp:GridView ID="PendingRequestGridView" AutoGenerateColumns="false" runat="server" DataKeyNames="RequestID" DataSourceID="RequestDataSource" OnRowCommand="PendingRequestGridView_RowCommand">
                 <Columns>
                     <asp:TemplateField HeaderText="Hospital Name">
                         <ItemTemplate>
                             <asp:Label ID="HospitalNameLbl" runat="server" Text='<% # Eval("HospitalName") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Hospital ID">
+                        <ItemTemplate>
+                            <asp:Label ID="HospitalIDLbl" runat="server" Text='<% # Eval("HospitalID") %>'></asp:Label> 
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Blood">
@@ -85,7 +90,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Rhesus">
                         <ItemTemplate>
-                           <asp:CheckBox ID="RhesusChckBox" runat="server" Checked='<%# Eval("Rhesus") %>' />
+                           <asp:Label runat="server" ID="RhesusLbl" Text='<% # Eval("Rhesus") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Quantity">
@@ -104,6 +109,8 @@
                 </Columns>
             </asp:GridView>
         </ItemTemplate>
-
     </asp:FormView>
+
+    <h2>My Order</h2>
+    <asp:FormView ID="MyOrderFormView"
 </asp:Content>

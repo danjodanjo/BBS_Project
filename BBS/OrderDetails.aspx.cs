@@ -28,7 +28,7 @@ namespace BBS
             SqlDataSource reqDataSource = new SqlDataSource();
             reqDataSource.ID = "RequestDataSource";
             reqDataSource.ConnectionString = connString;
-            reqDataSource.SelectCommand = "SELECT b.HospitalName, b.HospitalID, a.Blood, a.Rhesus, a.Qty, a.RequiredDate, a.Attachment FROM [Request] a JOIN [Hospital] b ON a.FromHospital_ID = b.HospitalID "
+            reqDataSource.SelectCommand = "SELECT a.RequestID, b.HospitalName, b.HospitalID, a.Blood, a.Rhesus, a.Qty, a.RequiredDate, a.Attachment FROM [Request] a JOIN [Hospital] b ON a.FromHospital_ID = b.HospitalID "
                 + "WHERE a.ToHospital_ID = " + Int64.Parse(Request.Cookies["HospitalID"].Value) + " AND a.isAccepted = 0";
 
             this.Page.Controls.Add(reqDataSource);
@@ -39,7 +39,7 @@ namespace BBS
             SqlDataSource delivDataSource = new SqlDataSource();
             delivDataSource.ID = "DeliverDataSource";
             delivDataSource.ConnectionString = connString;
-            delivDataSource.SelectCommand =  "SELECT b.HospitalName, a.Blood, a.Rhesus, a.Qty, a.RequiredDate AS 'Time Remaining' From [Request] a JOIN [Hospital] b ON a.ToHospital_ID = b.HospitalID "
+            delivDataSource.SelectCommand =  "SELECT a.RequestID, b.HospitalName, a.Blood, a.Rhesus, a.Qty, a.RequiredDate AS 'Time Remaining' From [Request] a JOIN [Hospital] b ON a.FromHospital_ID = b.HospitalID "
                 + "WHERE a.ToHospital_ID = " + Int64.Parse(Request.Cookies["HospitalID"].Value) + " AND a.isAccepted = 1";
 
             this.Page.Controls.Add(delivDataSource);
@@ -64,6 +64,7 @@ namespace BBS
                         // Retrieve the row index stored in the 
                         // CommandArgument property.
                         int index = Convert.ToInt32(e.CommandArgument);
+                        Response.Write(index.ToString());
 
                         // Retrieve the row that contains the button 
                         // from the Rows collection.
@@ -87,14 +88,16 @@ namespace BBS
         {
             SqlConnection sqlConn = new SqlConnection(connString);
 
-            string query = "UPDATE [Request] SET [isAccepted] = @accepted, WHERE [FromHospital_ID] = @FrHospital_ID, [ToHospital_ID] = @ToHospital_ID ";
+            string query = "UPDATE [Request] SET [isAccepted] = @isAccepted WHERE [FromHospital_ID] LIKE @FromHospital_ID AND [ToHospital_ID] = @ToHospital_ID ";
             sqlConn.Open();
             SqlCommand command = new SqlCommand(query, sqlConn);
-            command.Parameters.AddWithValue("@accepted", 1);
-            command.Parameters.AddWithValue("@FrHospital_ID", Int64.Parse(row.Cells[1].Text));
-            command.Parameters.AddWithValue("@ToHospital_ID", Int64.Parse(Request.Cookies["HospitalID"].Value));
+            command.Parameters.AddWithValue("@isAccepted", 1);
+            command.Parameters.AddWithValue("@FromHospital_ID", Convert.ToInt32(((Label)row.Cells[1].FindControl("HospitalIDLbl")).Text));
+            command.Parameters.AddWithValue("@ToHospital_ID", Convert.ToInt32(Request.Cookies["HospitalID"].Value));
 
-            command.ExecuteNonQuery();
+            int affected = command.ExecuteNonQuery();
+            Response.Write(affected);
+            
             sqlConn.Close();                 
         }
     }
