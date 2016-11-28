@@ -1,8 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="BloodInventory.aspx.cs" Inherits="BBS.BloodInventory" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="JScript" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="NavPlaceHolder" runat="server">
+    
+    <style type="text/css">
+        #navigation li {
+}
 
+.menu {
+    list-style-type: none;
+    display:inline-block;
+    margin-right: 10px;
+    text-decoration:none;
+}
+
+.link-menu {
+    text-decoration:none;
+}
+    </style>
+</asp:Content>
+
+<asp:Content ID="BloodRequestNav" ContentPlaceHolderID="NavPlaceHolder" runat="server">
+    <ul id="navigation">
+        <li class="menu"><asp:HyperLink runat="server" Text="Blood Inventory" ID="BloodInventoryLink" NavigateUrl="~/BloodInventory.aspx" CssClass="link-menu"></asp:HyperLink></li>
+        <li class="menu"><asp:HyperLink runat="server" Text="Blood Request" ID="BlooDRequestLink" NavigateUrl="~/BloodRequest.aspx" CssClass="link-menu"></asp:HyperLink></li>
+        <li class="menu"><asp:HyperLink runat="server" Text="Order Details" ID="OrderDetailsLink" NavigateUrl="~/OrderDetails.aspx" CssClass="link-menu"></asp:HyperLink></li>
+        <li class="menu"><asp:HyperLink runat="server" Text="Appointment List" ID="AppointmentList" NavigateUrl="~/AppointmentList.aspx" CssClass="link-menu"></asp:HyperLink></li>
+        <li class="menu"><asp:HyperLink runat="server" Text="View Donors" ID="ViewDonourLink" NavigateUrl="~/ViewDonors.aspx" CssClass="link-menu"></asp:HyperLink></li>
+    </ul>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="BodyPlaceHolder" runat="server">
     <div>

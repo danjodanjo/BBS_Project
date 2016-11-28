@@ -18,7 +18,11 @@ namespace BBS
             SqlDataSource appointDataSource = new SqlDataSource();
             appointDataSource.ID = "AppointmentFormSource";
             appointDataSource.ConnectionString = WebConfigurationManager.ConnectionStrings["BBSConnectionString"].ConnectionString;
-            appointDataSource.SelectCommand = "SELECT a.donorID, a.DFirstName, a.DLastName, a.DICNumber, a.DGender, a.DAddress, a.DEmail, a.DCNumber, a.DBloodType, a.DRhesus, b.ArrivalTime, b.Remarks FROM [Registration] a JOIN [Appointment] b ON a.donorID = b.App_BloodID WHERE donorID = " + Convert.ToInt32(Request.QueryString["donorID"]);
+            appointDataSource.SelectCommand = "SELECT a.AppointmentID, a.donorID, a.DFirstName, a.DLastName, a.DICNumber, a.DGender, a.DAddress, a.DEmail, a.DCNumber, a.DBloodType, a.DRhesus, b.ArrivalTime, b.Remarks FROM [Registration] a JOIN [Appointment] b ON a.donorID = b.App_BloodID WHERE donorID = " + Convert.ToInt32(Request.QueryString["donorID"]);
+
+            appointDataSource.UpdateCommand = "UPDATE [Appointment] SET [ArrivalTime] = "
+                + ((TextBox)AppointmentFormView.FindControl("ArrivalTimeTxtBox")).Text + ", [Remarks] = " + ((TextBox)AppointmentFormView.FindControl("RemarksTxtBox")).Text
+                + " WHERE [AppointmentID] = " + ((HiddenField)AppointmentFormView.FindControl("AppointmentIDHidd")).Value;
 
             this.Page.Controls.Add(appointDataSource);
         }
@@ -26,6 +30,9 @@ namespace BBS
         protected void AppointmentFormView_ItemUpdating(object sender, FormViewUpdateEventArgs e)
         {
 
+            // show alert message
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AppointmentCompleteAlertMessage", "alert('Appointment Made')", true);
+            Response.Redirect("~/AppointmentList.aspx");    
         }
 
         protected void insert_new_appointment() {
@@ -44,8 +51,7 @@ namespace BBS
             command.ExecuteNonQuery();
             connection.Close();
 
-            // show alert message
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "AppointmentCompleteAlertMessage", "alert('Appointment Made')", true);
+          
         
         }
 

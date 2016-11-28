@@ -13,6 +13,51 @@ namespace BBS {
     public partial class AppointmentList {
         
         /// <summary>
+        /// BloodInventoryLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink BloodInventoryLink;
+        
+        /// <summary>
+        /// BlooDRequestLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink BlooDRequestLink;
+        
+        /// <summary>
+        /// OrderDetailsLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink OrderDetailsLink;
+        
+        /// <summary>
+        /// AppointmentListLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink AppointmentListLink;
+        
+        /// <summary>
+        /// ViewDonourLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ViewDonourLink;
+        
+        /// <summary>
         /// AppointmentListFormView control.
         /// </summary>
         /// <remarks>

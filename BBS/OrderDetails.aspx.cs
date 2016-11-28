@@ -121,9 +121,9 @@ namespace BBS
             command.Parameters.AddWithValue("@ToHospital_ID", Convert.ToInt32(Request.Cookies["HospitalID"].Value));
 
             int affected = command.ExecuteNonQuery();
-            Response.Write(affected);
             
-            sqlConn.Close();                 
+            sqlConn.Close();
+            Response.Redirect(Request.RawUrl);    
         }
 
         protected void reject_and_update_status(GridViewRow row) 
@@ -137,9 +137,9 @@ namespace BBS
             command.Parameters.AddWithValue("@ToHospital_ID", Convert.ToInt32(Request.Cookies["HospitalID"].Value));
 
             int affected = command.ExecuteNonQuery();
-            Response.Write(affected);
 
             sqlConn.Close();
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

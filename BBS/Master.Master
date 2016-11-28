@@ -10,23 +10,33 @@
     </asp:ContentPlaceHolder>
     <link rel="stylesheet" type="text/css" href="main.css" />
     <style type="text/css">
-        .main-logo {}
+        #header {
+            display:inline-block;
+        }
+        #nav {
+            display:inline-block;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+    <div id="container">
     <div id="header">
-        <asp:Image ID="Logo" runat="server" ImageUrl="~/BBS-logo3.png" CssClass="main-logo" Height="168px" Width="566px"/>
-        <asp:ContentPlaceHolder ID="NavPlaceHolder" runat="server">
+        <asp:Image ID="Logo" runat="server" ImageUrl="~/BBS-logo3.png" CssClass="main-logo" Height="168px" Width="500px"/>
+
+    </div>
+    <div id="nav">
+         <asp:ContentPlaceHolder ID="NavPlaceHolder" runat="server">
     
         </asp:ContentPlaceHolder>
     </div>
-
+    </div>
     <div id="body">
         <asp:ContentPlaceHolder ID="BodyPlaceHolder" runat="server">
 
         </asp:ContentPlaceHolder>
     </div>
+
     </form>
 </body>
 </html>
