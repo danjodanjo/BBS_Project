@@ -3,55 +3,66 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="NavPlaceHolder" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="BodyPlaceHolder" runat="server">
-    <asp:FormView runat="server" ID="FormView">
-        <HeaderTemplate></HeaderTemplate>
-        <InsertItemTemplate>
+<asp:Content ID="AppointmentFormContent" ContentPlaceHolderID="BodyPlaceHolder" runat="server">
+    <asp:FormView runat="server" DataSourceID="AppointmentFormSource" ID="AppointmentFormView" DataKeyNames="donorID" DefaultMode="Edit" OnItemUpdating="AppointmentFormView_ItemUpdating" OnDataBound="AppointmentFormView_DataBound">
+        <HeaderTemplate>Appointment Form</HeaderTemplate>
+        <EmptyDataTemplate>
+            No Data to show.
+        </EmptyDataTemplate>
+        <EditItemTemplate>
             <table>
                 <tr>
                     <td>Donor ID</td>
-                    <td><asp:Label ID="DonorIDLbl" runat="server"></asp:Label></td>
+                    <td><asp:Label ID="DonorIDLbl" runat="server" Text='<% # Bind("donorID") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td><asp:Label ID="DonorNmLbl" runat="server"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="DonorFirstNameLbl" Text='<% # Bind("DFirstName") %>'></asp:Label>&nbsp;
+                        <asp:Label runat="server" ID="DonorLastNameLbl" Text='<% # Bind("DLastName") %>'></asp:Label>
+                    </td>
                 </tr>
                 <tr>
                     <td>IC/Number</td>
-                    <td><asp:Label runat="server" ID="ICLbl"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="ICLbl" Text='<% # Bind("DICNumber") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>Gender</td>
-                    <td><asp:Label runat="server" ID="GenderLbl"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="GenderLbl" Text='<% # Bind("DGender") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>Address</td>
-                    <td><asp:Label runat="server" ID="AddressLbl"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="AddressLbl" Text='<% # Bind("DAddress") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>E-mail</td>
-                    <td><asp:Label runat="server" ID="EmailLbl"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="EmailLbl" Text='<% # Bind("DEmail") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>Contact number</td>
-                    <td><asp:Label runat="server" ID="ContactLbl"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="ContactLbl" Text='<% # Bind("DCNumber") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>Blood</td>
-                    <td><asp:Label runat="server" ID="BloodLbl"></asp:Label></td>
+                    <td><asp:Label runat="server" ID="BloodLbl" Text='<% # Bind("DBloodType") %>'></asp:Label></td>
+                </tr>
+                <tr>
+                    <td>Rhesus</td>
+                    <td><asp:Label runat="server" ID="RhesusLbl" Text='<% # Bind("DRhesus") %>'></asp:Label></td>
                 </tr>
                 <tr>
                     <td>Arrival Time</td>
-                    <td><asp:TextBox runat="server" ID="ArrivalTimeTxtBox"></asp:TextBox></td>
+                    <td><asp:Textbox runat="server" ID="ArrivalTimeTxtBox" Text='<% # Bind("ArrivalTime") %>'></asp:Textbox></td>
                 </tr>
                 <tr>
                     <td>Remarks</td>
-                    <td><asp:TextBox runat="server" ID="RemarksTxtBox"></asp:TextBox></td>
+                    <td><asp:Textbox runat="server" ID="RemarksTxtBox" Text='<% # Bind("Remarks") %>'></asp:Textbox></td>
                 </tr>
                 <tr>
-                    <td><asp:LinkButton runat="server" Text="Insert" CommandName="Insert"></asp:LinkButton></td>
+                    <td><asp:Button runat="server" Text="Add to Appointment list" CommandName="Update"></asp:Button></td>
                 </tr>
             </table>
-        </InsertItemTemplate>
+        </EditItemTemplate>
     </asp:FormView>
+
+
 </asp:Content>

@@ -10,15 +10,24 @@
 namespace BBS {
     
     
-    public partial class AppointmentList {
+    public partial class ViewDonors {
         
         /// <summary>
-        /// AppointmentListFormView control.
+        /// ViewDonorGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView AppointmentListFormView;
+        protected global::System.Web.UI.WebControls.GridView ViewDonorGridView;
+        
+        /// <summary>
+        /// DonorListDataSource control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DonorListDataSource;
     }
 }

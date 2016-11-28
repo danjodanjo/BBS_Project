@@ -13,12 +13,12 @@ namespace BBS {
     public partial class AppointmentForm {
         
         /// <summary>
-        /// FormView control.
+        /// AppointmentFormView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FormView FormView;
+        protected global::System.Web.UI.WebControls.FormView AppointmentFormView;
     }
 }

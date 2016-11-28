@@ -112,5 +112,17 @@
     </asp:FormView>
 
     <h2>My Order</h2>
-    <asp:FormView ID="MyOrderFormView"
+    <asp:FormView ID="MyOrderFormView" runat="server" DataKeyNames="RequestID" DataSourceID="MyOrderDataSource">
+        <HeaderTemplate>
+            Your hospital's order
+        </HeaderTemplate>
+        <EmptyDataTemplate>
+            You haven't placed any order
+        </EmptyDataTemplate>
+        <ItemTemplate>
+            <asp:GridView ID="MyOrderGridView" runat="server" DataSourceID="MyOrderDataSource">
+
+            </asp:GridView>
+        </ItemTemplate>
+    </asp:FormView>
 </asp:Content>

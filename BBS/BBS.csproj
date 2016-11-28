@@ -72,6 +72,7 @@
     <Content Include="main.css" />
     <Content Include="OrderDetails.aspx" />
     <Content Include="SearchResults.aspx" />
+    <Content Include="ViewDonors.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -138,6 +139,13 @@
     </Compile>
     <Compile Include="SearchResults.aspx.designer.cs">
       <DependentUpon>SearchResults.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewDonors.aspx.cs">
+      <DependentUpon>ViewDonors.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewDonors.aspx.designer.cs">
+      <DependentUpon>ViewDonors.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
